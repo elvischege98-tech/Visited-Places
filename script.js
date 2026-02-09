@@ -30,9 +30,9 @@ const destinations = document.querySelectorAll(".destination");
 
 //Create objects
 const places = [
-    new place("Eiffel Tower,Paris", destinations[0]);
-    new place("Amazon River, Brazil", destinations[1]);
-    new place("Maasai Mara, Kenya", destinations[2]);
+    new place("Eiffel Tower,Paris", destinations[0]),
+    new place("Amazon River, Brazil", destinations[1]),
+    new place("Maasai Mara, Kenya", destinations[2])
 ];
 //Create button
 places.forEach(place =>{
