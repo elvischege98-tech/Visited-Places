@@ -5,7 +5,7 @@ function place(buttonText, element){
 }
 
 //Prototype method
-Place.prototype.createButton = function(){
+place.prototype.createButton = function(){
     const button = document.createElement("button");
     button.innerText = this.buttonText;
     button.style.margin = "20px";
