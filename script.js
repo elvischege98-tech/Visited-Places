@@ -26,7 +26,7 @@ Place.prototype.createButton = function(){
 };
  
 //select all destinations
-const destinations = document.querySelector(".destination");
+const destinations = document.querySelectorAll(".destination");
 
 //Create objects
 const places = [
