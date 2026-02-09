@@ -1,0 +1,14 @@
+ .Head{
+    background-color: rgb(177, 177, 250);
+    padding: 50px;
+ }
+ h1{
+    color: antiquewhite;
+    text-align: center;
+ }
+ body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    line-height: 1.6;
+    padding: 20px;
+ }
