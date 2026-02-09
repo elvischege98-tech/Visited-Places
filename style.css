@@ -1,14 +1,19 @@
- .Head{
-    background-color: rgb(177, 177, 250);
-    padding: 50px;
- }
  h1{
     color: antiquewhite;
     text-align: center;
+    background-color: rgb(236, 186, 186);
+    padding: 20px;
+    border: solid rgb(234, 179, 179);
  }
  body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7fb;
+    background-color: rgb(238, 229, 229);
     line-height: 1.6;
     padding: 20px;
  }
+  .destination{
+  width: 60%;
+  margin: 20px auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: solid rgb(106, 60, 60) 5px;
+  }
