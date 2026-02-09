@@ -16,4 +16,12 @@
   margin: 20px auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border: solid rgb(106, 60, 60) 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   }
+.button-container{
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+}
