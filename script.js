@@ -1,5 +1,5 @@
 // Constructor function
-function Place(buttonText, element){
+function place(buttonText, element){
     this.buttonText = buttonText;
     this.element = element;
 }
