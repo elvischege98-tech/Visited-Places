@@ -12,7 +12,7 @@ Place.prototype.createButton = function(){
     button.style.padding = "20px";
     
     //Toggle
-    button.addEventListener("Click", () =>{
+    button.addEventListener("click", () =>{
         if(this.element.style.display === "none"){
             this.element.style.display = "block";
         } else{
