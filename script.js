@@ -1,74 +1,72 @@
-// ==========================
-// Business Logic
-// ==========================
+// Constructor function
+function Destination(name, location, season, memories, recommendation, img) {
+    this.name = name;
+    this.location = location;
+    this.season = season;
+    this.memories = memories; // array
+    this.recommendation = recommendation;
+    this.img = img;
+}   
 
-// Constructor
-function Place(location, landmarks, time, notes) {
-  this.location = location;
-  this.landmarks = landmarks;
-  this.time = time;
-  this.notes = notes;
-}
-
-// Prototype method to return formatted summary
-Place.prototype.getSummary = function () {
-  return this.location + " - Visited in " + this.time;
+// Prototype method 
+Destination.prototype.render = function() {
+    return `
+    <div class="destination fade-in">
+        <h2>${this.name}</h2>
+        <ul>
+            <li><strong>Location:</strong>${this.location}</li>
+            <li><strong>Season of year visited:</strong>${this.season}</li>
+            <li><strong>Memories:</strong>
+                <ul>
+                    ${this.memories.map(memory => `<li>${memory}</li>`).join('')}   
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li><strong>Recommendation:</strong>${this.recommendation}</li>
+        </ul>
+        <img src="${this.img}" alt="" height="200px" width="100%">
+    </div>
+    `;
 };
 
-
-// ==========================
-// Application Logic
-// ==========================
-
-// Create objects using the constructor (NOT literal notation)
-
-var paris = new Place(
-  "Eiffel Tower, Paris",
-  ["Seine River cruise", "Arc de Triomphe", "French cuisine"],
-  "Winter",
-  "Amazing architecture and beautiful night lights."
+// Create objects
+const eiffelTower = new Destination(
+    "Eiffel Tower",
+    "Paris, France",
+    "Spring",
+    ["The view from the top was breathtaking!", "I loved the light show at night."], 
+    "Definitely a must-see when visiting Paris!",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU2ZrOEt_Cumf7kIRU9Pjlnkm1479biPKg3tHXwAsMZnvlD3o9"
 );
 
-var amazon = new Place(
-  "Amazon River, Brazil",
-  ["Saw wildlife", "Boat ride", "Rainforest tour"],
-  "Summer",
-  "Hot, humid, and full of adventure."
+const amazonRainforest = new Destination(
+    "Amazon Rainforest",
+    "South America",    
+    "Summer",
+    ["The biodiversity was incredible!", "I enjoyed the boat tour along the river."], 
+    "A unique experience for nature lovers!",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR1nl7Cg71gLQQ15Vh4C9EHQTGyJ73Klzl4w&s"
 );
 
-var kenya = new Place(
-  "Maasai Mara, Kenya",
-  ["Safari tour", "Buffalo migration", "Cultural visit"],
-  "Summer",
-  "Incredible wildlife and unforgettable scenery."
-);
+const maasaiMara = new Destination(
+    "Maasai Mara",
+    "Kenya, Africa",    
+    "Fall",
+    ["The wildlife was amazing!", "I loved the sunrise safari."],   
+    "A fantastic destination for wildlife enthusiasts!",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkj8mn0Et6PXT3-wyz_KwUYZ6iCwEDP_sfow&s"
+);  
 
+// Click events
+document.getElementById('europe').addEventListener('click', function() {
+    document.getElementById('content').innerHTML = eiffelTower.render();
+});
 
-// ==========================
-// Display Logic
-// ==========================
+document.getElementById('southamerica').addEventListener('click', function() {
+    document.getElementById('content').innerHTML = amazonRainforest.render();
+});
 
-var places = [paris, amazon, kenya];
-
-function displayPlaces() {
-  var container = document.querySelector(".button-container");
-  container.innerHTML = "";
-
-  places.forEach(function (place) {
-    var div = document.createElement("div");
-    div.className = "destination";
-
-    div.innerHTML = `
-      <h2>${place.location}</h2>
-      <ul>
-        <li><strong>Landmarks:</strong> ${place.landmarks.join(", ")}</li>
-        <li><strong>Time Visited:</strong> ${place.time}</li>
-        <li><strong>Notes:</strong> ${place.notes}</li>
-      </ul>
-    `;
-
-    container.appendChild(div);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", displayPlaces);
+document.getElementById('africa').addEventListener('click', function() {
+    document.getElementById('content').innerHTML = maasaiMara.render();
+});     
