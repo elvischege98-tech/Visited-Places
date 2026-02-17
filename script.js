@@ -1,41 +1,74 @@
-// Constructor function
-function place(buttonText, element){
-    this.buttonText = buttonText;
-    this.element = element;
+// ==========================
+// Business Logic
+// ==========================
+
+// Constructor
+function Place(location, landmarks, time, notes) {
+  this.location = location;
+  this.landmarks = landmarks;
+  this.time = time;
+  this.notes = notes;
 }
 
-//Prototype method
-place.prototype.createButton = function(){
-    const button = document.createElement("button");
-    button.innerText = this.buttonText;
-    button.style.margin = "20px";
-    button.style.padding = "20px";
-    
-    //Toggle
-    button.addEventListener("click", () =>{
-        if(this.element.style.display === "none"){
-            this.element.style.display = "block";
-        } else{
-            this.element.style.display = "none"
-        }
-    });
-
-    //Insert button
-    this.element.parentNode.insertBefore(button, this.element);
-
+// Prototype method to return formatted summary
+Place.prototype.getSummary = function () {
+  return this.location + " - Visited in " + this.time;
 };
- 
-//select all destinations
-const destinations = document.querySelectorAll(".destination");
 
-//Create objects
-const places = [
-    new place("Eiffel Tower,Paris", destinations[0]),
-    new place("Amazon River, Brazil", destinations[1]),
-    new place("Maasai Mara, Kenya", destinations[2])
-];
-//Create button
-places.forEach(place =>{
-    place.element.style.display = "none";
-    place.createButton();
-})
+
+// ==========================
+// Application Logic
+// ==========================
+
+// Create objects using the constructor (NOT literal notation)
+
+var paris = new Place(
+  "Eiffel Tower, Paris",
+  ["Seine River cruise", "Arc de Triomphe", "French cuisine"],
+  "Winter",
+  "Amazing architecture and beautiful night lights."
+);
+
+var amazon = new Place(
+  "Amazon River, Brazil",
+  ["Saw wildlife", "Boat ride", "Rainforest tour"],
+  "Summer",
+  "Hot, humid, and full of adventure."
+);
+
+var kenya = new Place(
+  "Maasai Mara, Kenya",
+  ["Safari tour", "Buffalo migration", "Cultural visit"],
+  "Summer",
+  "Incredible wildlife and unforgettable scenery."
+);
+
+
+// ==========================
+// Display Logic
+// ==========================
+
+var places = [paris, amazon, kenya];
+
+function displayPlaces() {
+  var container = document.querySelector(".button-container");
+  container.innerHTML = "";
+
+  places.forEach(function (place) {
+    var div = document.createElement("div");
+    div.className = "destination";
+
+    div.innerHTML = `
+      <h2>${place.location}</h2>
+      <ul>
+        <li><strong>Landmarks:</strong> ${place.landmarks.join(", ")}</li>
+        <li><strong>Time Visited:</strong> ${place.time}</li>
+        <li><strong>Notes:</strong> ${place.notes}</li>
+      </ul>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", displayPlaces);
