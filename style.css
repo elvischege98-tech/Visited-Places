@@ -13,13 +13,14 @@
  }
   .destination{
   width: 60%;
+  height: 50%;
   margin: 20px auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border: solid rgb(188, 114, 171) 5px;
   display: flex;
   flex-direction: column;
   box-shadow: 10px 0 10px 0 rgb(188, 114, 171);
-  gap: 200px;
+  gap: 10px;
   }
 
   button{
